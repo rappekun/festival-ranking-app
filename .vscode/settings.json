@@ -1,0 +1,38 @@
+{
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.addMissingImports.ts": "always",
+		"source.biome": "always",
+		"source.fixAll": "always",
+		"source.fixAll.biome": "always",
+		"source.fixAll.ts": "always",
+		"source.organizeImports": "always",
+		"source.organizeImports.biome": "always",
+		"source.removeUnused.ts": "always",
+		"source.removeUnusedImports": "always",
+		"source.sortImports": "always"
+	},
+	"editor.defaultFormatter": "biomejs.biome",
+	"[dockerfile]": {
+		"editor.defaultFormatter": "docker.docker"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"files.associations": {
+		".env*": "dotenv",
+		"*.css": "tailwindcss"
+	}
+}

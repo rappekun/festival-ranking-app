@@ -1,0 +1,14 @@
+{
+	"recommendations": [
+		"biomejs.biome",
+		"oven.bun-vscode",
+		"ms-azuretools.vscode-containers",
+		"ms-vscode-remote.remote-containers",
+		"ms-azuretools.vscode-docker",
+		"docker.docker",
+		"ambar.bundle-size",
+		"github.vscode-github-actions",
+		"github.vscode-pull-request-github",
+		"bradlc.vscode-tailwindcss"
+	]
+}

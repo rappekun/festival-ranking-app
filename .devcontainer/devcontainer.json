@@ -1,0 +1,70 @@
+{
+	"name": "Festival Ranking App",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli": {
+			"version": "latest"
+		}
+	},
+	"forwardPorts": [3000],
+	"postStartCommand": "bun install",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"biomejs.biome",
+				"oven.bun-vscode",
+				"ms-azuretools.vscode-containers",
+				"ms-vscode-remote.remote-containers",
+				"ms-azuretools.vscode-docker",
+				"docker.docker",
+				"ambar.bundle-size",
+				"github.vscode-github-actions",
+				"github.vscode-pull-request-github",
+				"bradlc.vscode-tailwindcss"
+			],
+			"settings": {
+				"editor.cursorBlinking": "smooth",
+				"editor.cursorSmoothCaretAnimation": "on",
+				"editor.smoothScrolling": true,
+				"editor.formatOnSave": true,
+				"editor.codeActionsOnSave": {
+					"source.biome": "always",
+					"source.fixAll": "always",
+					"source.fixAll.ts": "always",
+					"source.fixAll.biome": "always",
+					"source.organizeImports": "always",
+					"source.organizeImports.biome": "always",
+					"source.addMissingImports.ts": "always",
+					"source.removeUnusedImports": "always",
+					"source.sortImports": "always",
+					"source.removeUnused.ts": "always"
+				},
+				"editor.defaultFormatter": "biomejs.biome",
+				"[dockerfile]": {
+					"editor.defaultFormatter": "docker.docker"
+				},
+				"[json]": {
+					"editor.defaultFormatter": "biomejs.biome"
+				},
+				"[javascript]": {
+					"editor.defaultFormatter": "biomejs.biome"
+				},
+				"[typescript]": {
+					"editor.defaultFormatter": "biomejs.biome"
+				},
+				"[typescriptreact]": {
+					"editor.defaultFormatter": "biomejs.biome"
+				},
+				"[javascriptreact]": {
+					"editor.defaultFormatter": "biomejs.biome"
+				},
+				"files.associations": {
+					".env*": "dotenv",
+					"*.css": "tailwindcss"
+				}
+			}
+		}
+	}
+}
