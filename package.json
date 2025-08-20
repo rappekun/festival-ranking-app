@@ -1,15 +1,17 @@
 {
-	"name": "frontend",
+	"name": "festival-ranking-app",
 	"private": true,
 	"type": "module",
 	"scripts": {
 		"build": "react-router build",
 		"cf-typegen": "wrangler types",
-		"deploy": "npm run build && wrangler deploy",
+		"deploy": "bun run build && wrangler deploy",
 		"dev": "react-router dev",
-		"postinstall": "npm run cf-typegen",
-		"preview": "npm run build && vite preview",
-		"typecheck": "npm run cf-typegen && react-router typegen && tsc -b"
+		"postinstall": "bun run cf-typegen",
+		"preview": "bun run build && vite preview",
+		"typecheck": "bun run cf-typegen && react-router typegen && tsc -b",
+		"format": "biome format ./app",
+		"lint": "biome lint ./app"
 	},
 	"dependencies": {
 		"@apollo/client": "^3.13.9",
