@@ -1,10 +1,9 @@
-import { desc } from "drizzle-orm";
-import type { FC } from "react";
-import { Link, useLoaderData } from "react-router";
 import db from "~/db";
 import { results } from "~/db/schema";
-import CrownIcon from "../_components/crown";
 import Header from "../_components/header";
+import RankingList from "./_components/ranking-list";
+
+import type { FC } from "react";
 
 export const loader = async () => {
 	const data = await db
@@ -20,14 +19,14 @@ const Ranking: FC = () => {
 	return (
 		<>
 			<Header />
-			<div className="bg-gradient-to-tr from-violet-500 to-pink-400 py-14">
-				<h1 className="text-center text-6xl font-bold text-white">
+			<div className="bg-gradient-to-tr from-violet-500 to-pink-400 py-6">
+				<h1 className="text-center font-bold text-4xl text-white">
 					Ranking - Total
 				</h1>
 			</div>
 			<main className="container mx-auto py-10">
 				<div>
-					<nav className="list-none pl-5 flex space-x-10 justify-center mb-6">
+					<nav className="mb-6 flex list-none justify-center space-x-10 pl-5">
 						<li>
 							<Link
 								to="/ranking/shooting"
@@ -54,59 +53,16 @@ const Ranking: FC = () => {
 						</li>
 					</nav>
 				</div>
-				<div className="rounded-2xl ring ring-blue-600 py-2 shadow-lg">
-					<h2 className="text-4xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-red-400 py-6">
+				<div className="rounded-2xl py-2 shadow-lg ring ring-gray-300">
+					<h2 className="bg-gradient-to-r from-violet-500 to-red-400 bg-clip-text py-6 text-center font-bold text-3xl text-transparent">
 						Top 10 Rankings
 					</h2>
 					<div className="flex flex-col space-y-4">
-						{data.map((item, index) => (
-							<div key={item.id.toString()}>
-								{index ? (
-									<hr className="border-gray-500 w-[97.5%] mx-auto mb-4" />
-								) : null}
-								<div className="flex flex-row items-center">
-									<div className="flex items-center justify-center w-64">
-										{
-											<CrownIcon
-												fill={
-													index === 0
-														? "gold"
-														: index === 1
-															? "silver"
-															: index === 2
-																? "bronze"
-																: "gray"
-												}
-												className="size-16 mr-2"
-											/>
-										}
-										<span className="text-5xl font-bold text-gray-800 ml-2">
-											No.{index + 1}
-										</span>
-									</div>
-									<div key={item.id} className="py-4 px-6">
-										<h2 className="text-2xl font-bold text-gray-800">
-											{item.nickname} - {item.school_type === 1 ? "中" : "高"}
-											{item.grade}-{item.class}-{item.number}
-										</h2>
-										<div className="flex space-x-10 mt-2">
-											<span className="text-lg text-gray-600">
-												Shooting Score: {item.shooting_score}
-											</span>
-											<span className="text-lg text-gray-600">
-												Wanage Score: {item.wanage_score}
-											</span>
-											<span className="text-lg text-gray-600">
-												Superball Score: {item.superball_score}
-											</span>
-										</div>
-										<p className="text-2xl text-gray-600">
-											Total Score: {item.total_score}
-										</p>
-									</div>
-								</div>
-							</div>
-						))}
+						{data.length > 3 ? (
+							<RankingList data={data} />
+						) : (
+							<p>No rankings available</p>
+						)}
 					</div>
 				</div>
 			</main>

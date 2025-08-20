@@ -8,7 +8,7 @@
 			"version": "latest"
 		}
 	},
-	"forwardPorts": [3000],
+	"forwardPorts": [5173],
 	"postStartCommand": "bun install",
 	"customizations": {
 		"vscode": {
