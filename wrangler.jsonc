@@ -3,5 +3,12 @@
 	"name": "react-router-app",
 	"compatibility_date": "2025-04-04",
 	"main": "./workers/app.ts",
-	"compatibility_flags": ["nodejs_compat"]
+	"compatibility_flags": ["nodejs_compat"],
+	"observability": { "enabled": true },
+	"routes": [
+		{
+			"pattern": "festival.wbapst.net",
+			"custom_domain": true
+		}
+	]
 }

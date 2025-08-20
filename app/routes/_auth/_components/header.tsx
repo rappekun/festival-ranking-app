@@ -1,5 +1,6 @@
-import type { FC } from "react";
 import { Link } from "react-router";
+
+import type { FC } from "react";
 
 const Links = [
 	{
@@ -15,15 +16,17 @@ const Links = [
 const Header: FC = () => {
 	return (
 		<header>
-			<div className="bg-white flex items-center justify-between px-10 py-4 shadow-md">
-				<h1 className="text-black text-2xl font-bold">Ranking App</h1>
+			<div className="flex items-center justify-between bg-white px-10 py-4 shadow-md">
+				<Link to="/">
+					<h1 className="font-bold text-2xl text-black">Ranking App</h1>
+				</Link>
 				<nav>
 					<ul className="flex space-x-10">
-						{Links.map((link) => (
+						{Links.map(link => (
 							<li key={link.to}>
 								<Link
 									to={link.to}
-									className="text-gray-800 py-2 px-6 rounded duration-150 hover:shadow hover:bg-gray-200"
+									className="rounded px-6 py-2 text-gray-800 duration-150 hover:bg-gray-200 hover:shadow"
 								>
 									{link.label}
 								</Link>

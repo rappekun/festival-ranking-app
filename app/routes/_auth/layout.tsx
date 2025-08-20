@@ -1,7 +1,9 @@
-import type { FC } from "react";
 import { type LoaderFunction, Outlet, redirect } from "react-router";
+
 import { checkPassword, getSessionStorage } from "~/libs/auth";
 import { destroySession } from "~/session.server";
+
+import type { FC } from "react";
 
 export const loader: LoaderFunction = async ({ request }) => {
 	const session = await getSessionStorage(request);

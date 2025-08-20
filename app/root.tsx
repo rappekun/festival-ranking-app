@@ -1,3 +1,5 @@
+import { createTheme, MantineProvider } from "@mantine/core";
+import "@mantine/core/styles.css";
 import {
 	isRouteErrorResponse,
 	Links,
@@ -39,7 +41,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Links />
 			</head>
 			<body>
-				{children}
+				<MantineProvider theme={createTheme({})}>{children}</MantineProvider>
 				<ScrollRestoration />
 				<Scripts />
 			</body>
@@ -68,11 +70,11 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 	}
 
 	return (
-		<main className="pt-16 p-4 container mx-auto">
+		<main className="container mx-auto p-4 pt-16">
 			<h1>{message}</h1>
 			<p>{details}</p>
 			{stack && (
-				<pre className="w-full p-4 overflow-x-auto">
+				<pre className="w-full overflow-x-auto p-4">
 					<code>{stack}</code>
 				</pre>
 			)}

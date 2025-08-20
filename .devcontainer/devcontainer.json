@@ -34,7 +34,6 @@
 					"source.fixAll": "always",
 					"source.fixAll.ts": "always",
 					"source.fixAll.biome": "always",
-					"source.organizeImports": "always",
 					"source.organizeImports.biome": "always",
 					"source.addMissingImports.ts": "always",
 					"source.removeUnusedImports": "always",

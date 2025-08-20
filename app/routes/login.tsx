@@ -1,12 +1,14 @@
-import type { FC } from "react";
 import {
 	type ActionFunction,
 	Form,
 	redirect,
 	useActionData,
 } from "react-router";
+
 import { checkPassword, getSessionStorage, hashPassword } from "~/libs/auth";
 import { commitSession } from "~/session.server";
+
+import type { FC } from "react";
 
 export const action: ActionFunction = async ({ request }) => {
 	const formData = await request.formData();
@@ -34,18 +36,18 @@ const Login: FC = () => {
 			replace
 			className="flex h-screen flex-col items-center justify-center"
 		>
-			<h1 className="mb-4 text-2xl font-bold">Login to Festival Ranking App</h1>
-			<p className="mb-4 text-red-500 inline-block">
+			<h1 className="mb-4 font-bold text-2xl">Login to Festival Ranking App</h1>
+			<p className="mb-4 inline-block text-red-500">
 				{action?.errors?.message && action.errors.message}
 			</p>
 			<input
 				type="password"
 				name="password"
-				className="w-sm border border-gray-500 p-2 outline-none rounded focus:border-blue-500 duration-150"
+				className="w-sm rounded border border-gray-500 p-2 outline-none duration-150 focus:border-blue-500"
 				placeholder="Password"
 			/>
 			<button
-				className="mt-4 w-sm py-2 bg-blue-500 hover:bg-blue-700 cursor-pointer duration-150 text-white rounded"
+				className="mt-4 w-sm cursor-pointer rounded bg-blue-500 py-2 text-white duration-150 hover:bg-blue-700"
 				type="submit"
 			>
 				認証

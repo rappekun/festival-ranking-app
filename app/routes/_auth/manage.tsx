@@ -1,8 +1,11 @@
-import type { FC } from "react";
+import { NativeSelect, NumberInput, TextInput } from "@mantine/core";
 import { Form, useActionData } from "react-router";
+
 import db from "~/db";
 import { results } from "~/db/schema";
 import Header from "./_components/header";
+
+import type { FC } from "react";
 import type { Route } from "./+types";
 
 export const action = async ({ request }: Route.ActionArgs) => {
@@ -48,19 +51,17 @@ export const action = async ({ request }: Route.ActionArgs) => {
 	}
 };
 
-const Register: FC = () => {
+const Manage: FC = () => {
 	const actionData = useActionData<typeof action>();
 	return (
 		<>
 			<Header />
-			<div className="bg-gradient-to-tr from-violet-500 to-pink-400 py-14">
-				<h1 className="text-center text-6xl font-bold text-white">Register</h1>
+			<div className="bg-gradient-to-tr from-violet-500 to-pink-400 py-6">
+				<h1 className="text-center font-bold text-4xl text-white">Manage</h1>
 			</div>
 			<main className="container mx-auto py-10">
-				<Form method="post" className="max-w-md mx-auto" replace>
-					<p className="text-center text-red-500 mb-4">
-						Please fill out the form below to register your scores.
-					</p>
+				<Form method="post" className="mx-auto max-w-xl" replace>
+					<h2 className="text-center font-bold text-2xl">登録</h2>
 					{actionData?.message && (
 						<p
 							className={`text-center ${actionData.success ? "text-gray-500" : "text-red-500"} mb-6`}
@@ -68,74 +69,39 @@ const Register: FC = () => {
 							{actionData.message}
 						</p>
 					)}
-					<input
-						type="text"
-						name="nickname"
-						placeholder="Nickname"
-						className="w-full p-2 mb-4 border border-gray-300 rounded"
-						required
-					/>
-					<select
+					<TextInput name="nickname" label="ニックネーム" required pb={16} />
+					<NativeSelect
 						name="school_type"
-						className="w-full p-2 mb-4 border border-gray-300 rounded"
+						label="学校種別"
+						pb={24}
 						required
-					>
-						<option value="1">中学校</option>
-						<option value="2">高校</option>
-					</select>
-					<input
-						type="number"
-						name="grade"
-						placeholder="Grade"
-						className="w-full p-2 mb-4 border border-gray-300 rounded"
-						min={1}
-						max={3}
-					/>
-					<input
-						type="number"
-						name="class"
-						placeholder="Class"
-						className="w-full p-2 mb-4 border border-gray-300 rounded"
-						required
-						min={1}
-						max={6}
-					/>
-					<input
-						type="number"
-						name="number"
-						placeholder="Number"
-						className="w-full p-2 mb-4 border border-gray-300 rounded"
-						required
-						min={1}
-						max={45}
-					/>
-					<input
-						name="wanage_score"
-						type="number"
-						placeholder="Wanage Score"
-						className="w-full p-2 mb-4 border border-gray-300 rounded"
-						required
-						min={0}
-					/>
-					<input
-						name="shooting_score"
-						type="number"
-						placeholder="Shooting Score"
-						className="w-full p-2 mb-4 border border-gray-300 rounded"
-						required
-						min={0}
-					/>
-					<input
-						name="superball_score"
-						type="number"
-						placeholder="Superball Score"
-						className="w-full p-2 mb-4 border border-gray-300 rounded"
-						required
-						min={0}
-					/>
+						data={[
+							{ label: "中学校", value: "1" },
+							{ label: "高校", value: "2" },
+						]}
+					></NativeSelect>
+
+					<p>学籍情報</p>
+					<div className="flex gap-x-3 pb-6">
+						<NumberInput label="学年" name="grade" required min={1} max={3} />
+						<NumberInput label="クラス" name="class" required min={1} max={6} />
+						<NumberInput label="番号" name="number" required min={1} max={45} />
+					</div>
+
+					<p>スコア</p>
+					<div className="flex gap-x-3 pb-6">
+						<NumberInput name="wanage_score" label="輪投げ" required min={0} />
+						<NumberInput name="shooting_score" label="射的" required min={0} />
+						<NumberInput
+							name="superball_score"
+							label="スーパーボール"
+							required
+							min={0}
+						/>
+					</div>
 					<button
 						type="submit"
-						className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-150 cursor-pointer"
+						className="w-full cursor-pointer rounded bg-blue-500 p-2 text-white transition duration-150 hover:bg-blue-600"
 					>
 						Register
 					</button>
@@ -145,4 +111,4 @@ const Register: FC = () => {
 	);
 };
 
-export default Register;
+export default Manage;
