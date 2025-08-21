@@ -11,12 +11,12 @@ const Index: FC = () => {
 			<div className="bg-gradient-to-tr from-violet-500 to-pink-400 py-14">
 				<h1 className="text-center font-bold text-5xl text-white">Games</h1>
 			</div>
-			<main className="container mx-auto max-w-6xl py-10">
+			<main className="container mx-auto max-w-5xl py-10">
 				<div className="grid grid-cols-3 gap-x-10">
 					{Games.map(game => (
 						<div
 							key={game}
-							className="rounded px-4 py-20 shadow ring ring-gray-300"
+							className="rounded px-2 py-20 shadow ring ring-gray-300"
 						>
 							<h2 className="text-center font-bold text-3xl">{game}</h2>
 						</div>

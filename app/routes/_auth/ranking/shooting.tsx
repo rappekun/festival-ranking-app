@@ -25,7 +25,7 @@ const ShootingRanking: FC = () => {
 			<Header />
 			<div className="bg-gradient-to-tr from-violet-500 to-pink-400 py-6">
 				<h1 className="text-center font-bold text-4xl text-white">
-					Ranking - Total
+					Ranking - Shooting
 				</h1>
 			</div>
 			<main className="container mx-auto py-10">

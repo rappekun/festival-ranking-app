@@ -1,5 +1,5 @@
 import { NativeSelect, NumberInput, TextInput } from "@mantine/core";
-import { Form, useActionData } from "react-router";
+import { Form, redirect, useActionData } from "react-router";
 
 import db from "~/db";
 import { results } from "~/db/schema";
@@ -44,7 +44,7 @@ export const action = async ({ request }: Route.ActionArgs) => {
 	} satisfies typeof results.$inferInsert;
 	try {
 		await db.insert(results).values(newResult);
-		return { success: true, message: "Registration successful!" };
+		return redirect("/ranking/");
 	} catch (error) {
 		console.error("Error inserting new result:", error);
 		return { success: false, message: "Failed to register. Please try again." };
